@@ -1,9 +1,8 @@
 
 import { BrowserRouter, Routes  , Route} from "react-router-dom"
-import NavBar from "./NavBar"
-import Body from "./Body"
-import Login from "./Login"
-import Profile from "./Profile"
+import Body from "./components/Body"
+import Login from "./components/Login"
+import Profile from "./components/Profile"
 
 function App() {
 

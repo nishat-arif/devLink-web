@@ -1,10 +1,11 @@
 
+import NavBar from "./NavBar"
 function App() {
 
 
   return (
     <div>   
-      <h1>DevLink - Web</h1>
+        <NavBar/>
     </div>
   )
 }

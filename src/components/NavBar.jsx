@@ -1,8 +1,28 @@
 import { useSelector } from "react-redux";
+import axios from 'axios';
+import {logout_api_url} from '../utils/constants'
+import { useDispatch } from "react-redux";
+import { removeLoginCredentials } from "../utils/store/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () =>{
 
   const loggedInData = useSelector(store => store.user.loggedInData);
+
+   const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+  const handleLogoutClick = async()=>{
+
+        const options = {withCredentials :true}
+        const logoutData = await axios.post(logout_api_url , options)
+        console.log("logoutData" ,logoutData )
+
+        dispatch(removeLoginCredentials())
+
+        navigate("/login")
+
+  }
 
     return (<div>
 
@@ -12,7 +32,7 @@ const NavBar = () =>{
             <a className="btn btn-ghost text-4xl">DevLink</a>
           </div>
           <div className="flex gap-2">
-            <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
+            <input type="text" placeholder="Search" className="input input-bordered mx-5 w-24 md:w-auto" />
             
               {loggedInData && <div className="flex items-center mx-2"><p >Welcome, {loggedInData.firstName}</p>
               <div className="dropdown dropdown-end mx-5">
@@ -33,7 +53,7 @@ const NavBar = () =>{
                     </a>
                   </li>
                   <li><a>Settings</a></li>
-                  <li><a>Logout</a></li>
+                  <li><a onClick={handleLogoutClick}>Logout</a></li>
                 </ul>
               </div>
               </div>}

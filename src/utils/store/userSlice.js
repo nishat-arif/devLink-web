@@ -11,10 +11,14 @@ const userSlice = createSlice({
 
             state.loggedInData = action.payload
 
+        },
+
+        removeLoginCredentials : (state )=>{
+            state.loggedInData = null
         }
     }
 });
 
-export const {addLoginCrdentials} = userSlice.actions
+export const {addLoginCrdentials  , removeLoginCredentials} = userSlice.actions
 
 export default userSlice.reducer;

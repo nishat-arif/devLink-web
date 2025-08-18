@@ -4,21 +4,21 @@ const userSlice = createSlice({
 
     name : "user" ,
     initialState : {
-        loggedInData : null
+        userData : null
     },
     reducers : {
-        addLoginCrdentials : (state , action)=>{
+        addUser : (state , action)=>{
 
-            state.loggedInData = action.payload
+            state.userData = action.payload
 
         },
 
-        removeLoginCredentials : (state )=>{
-            state.loggedInData = null
+        removeUser : (state )=>{
+            state.userData = null
         }
     }
 });
 
-export const {addLoginCrdentials  , removeLoginCredentials} = userSlice.actions
+export const {addUser  , removeUser} = userSlice.actions
 
 export default userSlice.reducer;

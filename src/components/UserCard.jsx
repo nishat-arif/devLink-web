@@ -3,7 +3,7 @@ import { base_url } from "../utils/constants";
 import {removeUserFromFeed} from '../utils/store/feedSlice';
 import { useDispatch  } from "react-redux";
 
-const UserCard = ({user}) =>{
+const UserCard = ({user , selfProfile}) =>{
 
 
     const dispatch = useDispatch();
@@ -45,16 +45,20 @@ const UserCard = ({user}) =>{
                         alt="profile photo"
                         className="rounded-xl" />
                     </figure>
-                    <div className="card-body items-center text-center">
+                    <div className="card-body items-center text-center justify-around">
                         <h2 className="card-title">{firstName + " " + lastName}</h2>
                         {age && gender && <p>{age} , {gender}</p>}
                         {skills && <p>{skills}</p>}
                         <p>{about }</p>
+                        {!selfProfile &&
                         
                         <div className="card-actions">
                         <button className="btn btn-primary" onClick={()=>handleSendRequest("interested" , _id)}>Like</button>
                         <button className="btn btn-primary" onClick={()=>handleSendRequest("ignored" , _id)}>Pass</button>
                         </div>
+                        
+                        }
+                        
                     </div>
                 </div>
             </div>)

@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from 'axios';
 import {login_api_url} from '../utils/constants'
 import { useDispatch } from "react-redux";
-import { addLoginCrdentials } from "../utils/store/userSlice";
+import { addUser } from "../utils/store/userSlice";
 import { useNavigate } from "react-router-dom";
 import {addHeaderFooter} from "../utils/store/bodySlice.js"
 
@@ -11,7 +11,7 @@ const Login = () => {
 
     const [emailId , setEmailId] = useState("");
     const [password , setPassword] = useState("");
-    const [errorMessage , setErrorMessage] = useState("")
+    const [errorMessage , setErrorMessage] = useState(null)
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Login = () => {
         // const data = await fetch(login_api_url, requestOptions)
         // const loginData = await data.json();
 
-        dispatch(addLoginCrdentials(loginData?.data?.data));
+        dispatch(addUser(loginData?.data?.data));
         dispatch(addHeaderFooter(true))
         navigate("/")
         }

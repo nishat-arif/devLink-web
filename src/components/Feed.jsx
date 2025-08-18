@@ -45,7 +45,6 @@ const Feed = () => {
     if (!feedContent) return <Loading />; //This line performs a conditional rendering check. If feed data is not yet available (e.g., while the API call is in progress), the component will render nothing (or a loading indicator could be rendered here). Once feed data is present, the component will proceed to render its content (which is not shown in this snippet but would typically involve mapping over the feed data to display individual feed items).
 
     if (feedContent.length <= 0){
-        console.log("feed length" , feedContent.length)
         return (<div className=' bg-amber-500 text-black flex w-1/3 mx-auto my-10 py-4 justify-center rounded-xl'>
                 <h3>No new user profile exists currently!!</h3>
                 </div>);}
@@ -56,7 +55,7 @@ const Feed = () => {
     return (<>
             {errorMessage && <Error message={errorMessage}/>}
             {feedContent && <div> 
-                                <UserCard user={feedContent[0]}/> 
+                                <UserCard user={feedContent[0]} selfProfile={false}/> 
                             </div>}
              </>
             )

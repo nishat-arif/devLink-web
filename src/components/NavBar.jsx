@@ -2,13 +2,13 @@ import { useSelector } from "react-redux";
 import axios from 'axios';
 import {logout_api_url} from '../utils/constants'
 import { useDispatch } from "react-redux";
-import { removeLoginCredentials } from "../utils/store/userSlice";
+import { removeUser } from "../utils/store/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import {addHeaderFooter} from "../utils/store/bodySlice.js"
 
 const NavBar = () =>{
 
-  const loggedInData = useSelector(store => store.user.loggedInData);
+  const userData = useSelector(store => store.user.userData);
 
    const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ const NavBar = () =>{
 
         const options = {withCredentials :true}
         await axios.post(logout_api_url ,{}, options)
-        dispatch(removeLoginCredentials())
+        dispatch(removeUser())
         dispatch(addHeaderFooter(false))
         navigate("/login")
 
@@ -33,13 +33,13 @@ const NavBar = () =>{
           <div className="flex gap-2">
             <input type="text" placeholder="Search" className="input input-bordered mx-5 w-24 md:w-auto" />
             
-              {loggedInData && <div className="flex items-center mx-2"><p >Welcome, {loggedInData.firstName}</p>
+              {userData && <div className="flex items-center mx-2"><p >Welcome, {userData.firstName}</p>
               <div className="dropdown dropdown-end mx-5">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                   <div className="w-10 rounded-full">
                     <img
                       alt="profile photo"
-                      src= {loggedInData.photoUrl} />
+                      src= {userData.photoUrl} />
                   </div>
                 </div>
                 <ul

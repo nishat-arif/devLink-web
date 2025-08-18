@@ -5,3 +5,7 @@ export const logout_api_url = "http://localhost:3000/logout"
 export const base_url = "http://localhost:3000";
 
 export const feed_api_suffix = '/feed';
+
+export const profile_view_api_suffix = '/profile/view';
+
+export const profile_edit_api_suffix = '/profile/edit'

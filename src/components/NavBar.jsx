@@ -3,7 +3,8 @@ import axios from 'axios';
 import {logout_api_url} from '../utils/constants'
 import { useDispatch } from "react-redux";
 import { removeLoginCredentials } from "../utils/store/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {addHeaderFooter} from "../utils/store/bodySlice.js"
 
 const NavBar = () =>{
 
@@ -15,11 +16,9 @@ const NavBar = () =>{
   const handleLogoutClick = async()=>{
 
         const options = {withCredentials :true}
-        const logoutData = await axios.post(logout_api_url , options)
-        console.log("logoutData" ,logoutData )
-
+        await axios.post(logout_api_url ,{}, options)
         dispatch(removeLoginCredentials())
-
+        dispatch(addHeaderFooter(false))
         navigate("/login")
 
   }
@@ -29,7 +28,7 @@ const NavBar = () =>{
                       
       <div className="navbar bg-base-300 shadow-sm">
           <div className="flex-1">
-            <a className="btn btn-ghost text-4xl">DevLink</a>
+            <Link to="/">DevLink</Link>
           </div>
           <div className="flex gap-2">
             <input type="text" placeholder="Search" className="input input-bordered mx-5 w-24 md:w-auto" />
@@ -46,13 +45,9 @@ const NavBar = () =>{
                 <ul
                   tabIndex={0}
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                  <li>
-                    <a className="justify-between">
-                      Profile
-                      <span className="badge">New</span>
-                    </a>
-                  </li>
-                  <li><a>Settings</a></li>
+                  <li><Link  className="justify-between" to="/profile">Profile</Link></li>
+                  <li><Link  className="justify-between" to="/connections">Connections</Link></li>
+                  <li><Link  className="justify-between" to="/requests">Requests</Link></li>
                   <li><a onClick={handleLogoutClick}>Logout</a></li>
                 </ul>
               </div>

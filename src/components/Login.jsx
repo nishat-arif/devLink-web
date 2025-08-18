@@ -4,6 +4,7 @@ import {login_api_url} from '../utils/constants'
 import { useDispatch } from "react-redux";
 import { addLoginCrdentials } from "../utils/store/userSlice";
 import { useNavigate } from "react-router-dom";
+import {addHeaderFooter} from "../utils/store/bodySlice.js"
 
 
 const Login = () => {
@@ -33,6 +34,7 @@ const Login = () => {
         // const loginData = await data.json();
 
         dispatch(addLoginCrdentials(loginData?.data?.data));
+        dispatch(addHeaderFooter(true))
         navigate("/")
         }
         catch(error){

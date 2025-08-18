@@ -8,4 +8,6 @@ export const feed_api_suffix = '/feed';
 
 export const profile_view_api_suffix = '/profile/view';
 
-export const profile_edit_api_suffix = '/profile/edit'
+export const profile_edit_api_suffix = '/profile/edit';
+
+export const signup_api_suffix = '/signup'

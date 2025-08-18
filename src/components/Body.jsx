@@ -21,7 +21,6 @@ const Body =()=>{
         if(userData) return;
 
         const profileData = await axios.get(base_url + profile_view_api_suffix , { withCredentials: true })
-        console.log("profileData" , profileData)
         dispatch(addUser(profileData.data?.data));
 
     }

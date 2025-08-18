@@ -12,12 +12,11 @@ const UserCard = ({user , selfProfile}) =>{
     const handleSendRequest =async(status , userId)=>{
 
         try{
-            const userData =await axios.post(base_url + "/request/send/" + status + "/" + userId ,
+            await axios.post(base_url + "/request/send/" + status + "/" + userId ,
                                             {},
                                             { withCredentials: true }
                                         );
 
-            console.log(userData)
             dispatch(removeUserFromFeed(userId));
         }catch(error){
             if (axios.isAxiosError(error)) {

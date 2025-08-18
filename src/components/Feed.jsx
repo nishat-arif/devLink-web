@@ -20,7 +20,6 @@ const Feed = () => {
             try {
 
                 const usersFeed = await axios.get(base_url+feed_api_suffix ,{withCredentials : true})
-                console.log("usersFeed" , usersFeed)
                 dispatch(addFeedContent(usersFeed?.data?.data))
 
             } catch (error) {

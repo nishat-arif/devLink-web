@@ -9,7 +9,7 @@ import Loading from "./Loading"
 
 const Feed = () => {
 
-    const [errorMessage , setErrorMessage] = useState("")
+    const [errorMessage , setErrorMessage] = useState(null)
 
     const dispatch = useDispatch()
     const feedContent = useSelector(store=>store.feed.feedContent)
@@ -44,8 +44,11 @@ const Feed = () => {
 
     if (!feedContent) return <Loading />; //This line performs a conditional rendering check. If feed data is not yet available (e.g., while the API call is in progress), the component will render nothing (or a loading indicator could be rendered here). Once feed data is present, the component will proceed to render its content (which is not shown in this snippet but would typically involve mapping over the feed data to display individual feed items).
 
-    if (feedContent.length <= 0)
-        return <h1 className="flex justify-center my-10">No new users founds!</h1>;
+    if (feedContent.length <= 0){
+        console.log("feed length" , feedContent.length)
+        return (<div className=' bg-amber-500 text-black flex w-1/3 mx-auto my-10 py-4 justify-center rounded-xl'>
+                <h3>No new user profile exists currently!!</h3>
+                </div>);}
 
 
 

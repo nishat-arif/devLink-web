@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
  import {base_url ,profile_edit_api_suffix} from "../utils/constants"
  import { Link } from "react-router-dom";
  import UserCard from "./UserCard";
  import { useDispatch } from "react-redux";
- import {addUser} from "../utils/store/userSlice"
+ import {addUser} from "../utils/store/userSlice";
+ import Error from './Error'
 
 const EditProfile = ({userData}) => {
 
@@ -20,29 +21,12 @@ const EditProfile = ({userData}) => {
         const [errorMessage , setErrorMessage] = useState(null)
         const [showToast, setShowToast] = useState(false);
 
-        // const getUserProfile =async ()=>{
-
-        //     try{
-        //         const userProfile = await axios.get( base_url + profile_view_api_suffix , {withCredentials : true})
-        //         console.log("userProfile" , userProfile) 
-        //     }
-        //     catch(error){
-        //         if (axios.isAxiosError(error)) {
-        //                 // Handle Axios-specific errors (e.g., network errors, server responses with status codes)
-        //                 console.error('Axios Error:', error.response ? error.response.data : error.message);
-        //                 setErrorMessage(error.response.data)
-        //                 } else {
-        //                 // Handle other types of errors
-        //                 console.error('General Error:', error.message);
-        //                 setErrorMessage(error.message)
-        //                 }
-
-        //     }
-        // }
 
         const handleSaveProfileClick = async() =>{
 
             try{
+
+                
 
                 const updatedData = await axios.patch( base_url + profile_edit_api_suffix , {
                                             firstName,
@@ -54,26 +38,30 @@ const EditProfile = ({userData}) => {
                                             },
                                             { withCredentials: true }
                                         );
-                console.log("updatedData" , updatedData)
 
                 dispatch(addUser(updatedData?.data?.data));
+               
+                setErrorMessage(null)
 
                 setShowToast(true);
 
+                
                 setTimeout(() => {
-                    setShowToast(false);
-                }, 3000);
+                    return setShowToast(false);
+                }, 2000);
             }
             catch(error){
-                if (axios.isAxiosError(error)) {
-                        // Handle Axios-specific errors (e.g., network errors, server responses with status codes)
-                        console.error('Axios Error:', error.response ? error.response.data : error.message);
-                        setErrorMessage(error.response.data)
-                        } else {
-                        // Handle other types of errors
-                        console.error('General Error:', error.message);
-                        setErrorMessage(error.message)
-                        }
+                setErrorMessage(error.response.data)
+                // if (axios.isAxiosError(error)) {
+                    
+                //         // Handle Axios-specific errors (e.g., network errors, server responses with status codes)
+                //         console.error('Axios Error:', error.response ? error.response.data : error.message);
+                //         setErrorMessage(error.response.data)
+                //         } else {
+                //         // Handle other types of errors
+                //         console.error('General Error:', error.message);
+                //         setErrorMessage(error.message)
+                //         }
 
             }
 
@@ -81,24 +69,29 @@ const EditProfile = ({userData}) => {
 
         }
 
-        useEffect(()=>{
-            //getUserProfile();
-        },[])
-
 
     return (<>
+
+        {errorMessage && <Error message={errorMessage}/>}
+
+        {showToast && 
+                        <div className="toast toast-top toast-center my-20 absolute">
+                            <div className="alert alert-success">
+                                <span className="text-black">Profile saved successfully.</span>
+                            </div>
+                        </div>
+        }
+
+        
     
-    <div className="flex gap-10 justify-center">
+        <div className="flex gap-10 justify-center">
             <div className = "flex items-center justify-center my-[100px] h-screen">
                 <div className="card bg-primary text-primary-content w-96 h-fit  flex">
                     <div className="card-body flex-srink">
                         <h2 className="card-title flex justify-center text-3xl ">Profile</h2>
+
                         <div>
-                            {/* {errorMessage && 
-                                <div role="alert" className="alert w-[95%] my-4 py-2">
-                                    <span>Error :  {errorMessage}</span>
-                                </div>
-                            } */}
+                            
                             <fieldset className="fieldset my-2">
                                 <legend className="fieldset-legend">First Name</legend>
                                 <input type="text" className="input" placeholder="Type here"  value= {firstName} onChange={(e)=>{setFirstName(e.target.value)}}/>
@@ -150,19 +143,15 @@ const EditProfile = ({userData}) => {
                         <div className="card-actions justify-center my-5 ">
                         <button className="btn text-xl" onClick= {handleSaveProfileClick}>Save Changes</button>
                         </div>
+                         
                     </div>
                 </div>
             </div>
             <UserCard user={{firstName, lastName, photoUrl, age, gender, about }} selfProfile={true} />
         </div>
 
-        {showToast && (
-        <div className="toast toast-top toast-center">
-          <div className="alert alert-success">
-            <span>Profile saved successfully.</span>
-          </div>
-        </div>
-      )}
+       
+
       </>
         
 

@@ -10,7 +10,6 @@ import Loading from "./Loading"
 const Feed = () => {
 
     const [errorMessage , setErrorMessage] = useState("")
-    console.log("errorMessage" , errorMessage)
 
     const dispatch = useDispatch()
     const feedContent = useSelector(store=>store.feed.feedContent)

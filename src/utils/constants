@@ -10,4 +10,11 @@ export const profile_view_api_suffix = '/profile/view';
 
 export const profile_edit_api_suffix = '/profile/edit';
 
-export const signup_api_suffix = '/signup'
+export const signup_api_suffix = '/signup';
+
+export const requestsReceived_api_suffix = '/users/requests/received';
+
+export const connection_api_suffix = "/users/connections"
+
+
+

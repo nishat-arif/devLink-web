@@ -37,7 +37,7 @@ const UserCard = ({user , selfProfile}) =>{
     }
 
     return (<div className="flex justify-center my-[100px]">
-                <div className="card bg-base-100 w-96 shadow-sm">
+                <div className="card bg-base-100 w-96 shadow-sm  hover:bg-slate-700">
                     <figure className="px-10 pt-10">
                         <img
                         src= {photoUrl}

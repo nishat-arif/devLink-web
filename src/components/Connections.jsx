@@ -1,10 +1,44 @@
+import { useDispatch, useSelector } from "react-redux";
+import { connection_api_suffix } from "../utils/constants";
+import { base_url } from "../utils/constants";
+import ConnectionCard from "./ConnectionCard";
+import axios from "axios";
+import { addConnections } from "../utils/store/connectionSlice";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 const Connections = () =>{
 
-    return (<div>
+    const dispatch = useDispatch();
 
-        Connection
+    const allConnections = useSelector(store=> store.connection.allConnections)
 
-    </div>)
+
+    const getAllConnections =async()=>{
+        if(allConnections) return;
+
+        const connections = await axios.get(base_url + connection_api_suffix ,  { withCredentials: true })
+
+        console.log("connections" , connections)
+        dispatch(addConnections(connections?.data?.data))
+    }
+
+    useEffect(()=>{
+        getAllConnections()
+    })
+
+    if(!allConnections) return;
+
+    if (allConnections.length <= 0){
+        return (<div className=' bg-amber-500 text-black flex w-1/3 mx-auto my-10 py-4 justify-center rounded-xl'>
+                <h3>you have no connections currently .<Link to="/" className="cursor-pointer underline"> Make new connections from here</Link></h3>
+                </div>);}
+
+    return (<div className="flex my-15  flex-col gap-10">
+
+                { allConnections.map((connection)=> <ConnectionCard key ={connection._id} connection={connection}/>)}
+
+        </div>)
 }
 
 export default Connections;

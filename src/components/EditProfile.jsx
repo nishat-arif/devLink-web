@@ -53,27 +53,29 @@ const EditProfile = ({userData}) => {
 
     return (<>
 
-                {errorMessage && <Error message={errorMessage}/>}
 
-                {showToast && 
-                                <div className="toast toast-top toast-center my-20 absolute">
+                {showToast &&  <div className="toast toast-top toast-center my-20 z-10">
                                     <div className="alert alert-success">
                                         <span className="text-black">Profile saved successfully.</span>
                                     </div>
                                 </div>
                 }
 
-        
-    
-                <div className="flex gap-10 justify-center">
-                    <div className = "flex items-center justify-center my-[100px] h-screen">
-                        <div className="card bg-primary text-primary-content w-96 h-fit  flex">
-                            <div className="card-body flex-srink">
-                                <h2 className="card-title flex justify-center text-3xl ">Profile</h2>
+                <div className=" flex gap-10 justify-center h-screen fixed inset-0">
 
-                                <div>
-                                    
-                                    <fieldset className="fieldset my-2">
+                    <div className = "flex items-start justify-center my-[100px]  overflow-y-auto">
+                        {errorMessage && 
+                                        <div role="alert" className="alert alert-error my-2 z-10 absolute flex w-auto mx-auto text-white bg-red-700">
+                                        <span>{errorMessage}</span>
+                                        </div>
+                        }
+
+                        <div className="card bg-primary text-primary-content w-96">
+                            <div className="card-body py-5">
+                                <h2 className="card-title flex justify-center text-xl">Profile</h2>
+
+                                <div>  
+                                    <fieldset className="fieldset">
                                         <legend className="fieldset-legend">First Name</legend>
                                         <input type="text" className="input" placeholder="Type here"  value= {firstName} onChange={(e)=>{setFirstName(e.target.value)}}/>
                                     </fieldset>
@@ -83,13 +85,13 @@ const EditProfile = ({userData}) => {
                                         <input type="text" className="input" placeholder="Type here"  value= {lastName} onChange={(e)=>{setLastName(e.target.value)}}/>
                                     </fieldset>
 
-                                    <fieldset className="fieldset my-2">
+                                    <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Email Id</legend>
                                         <input type="text" className="input cursor-not-allowed" placeholder="Type here"  value= {userData.emailId} disabled />
                                     </fieldset>
 
 
-                                    <fieldset className="fieldset my-2">
+                                    <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Age</legend>
                                         <input type="text" className="input" placeholder="Type here"  value= {age} onChange={(e)=>{setAge(e.target.value)}}/>
                                     </fieldset>
@@ -99,7 +101,7 @@ const EditProfile = ({userData}) => {
                                         <input type="text" className="input" placeholder="Type here"  value= {gender} onChange={(e)=>{setGender(e.target.value)}}/>
                                     </fieldset>
 
-                                    <fieldset className="fieldset my-2">
+                                    <fieldset className="fieldset">
                                         <legend className="fieldset-legend">Photo Url</legend>
                                         <input type="text" className="input" placeholder="Type here"  value= {photoUrl} onChange={(e)=>{setPhotoUrl(e.target.value)}}/>
                                     </fieldset>
@@ -119,16 +121,21 @@ const EditProfile = ({userData}) => {
                                         <p className="fieldset-legend underline"> <Link to="/profile/password">Change Password</Link></p>
                                     </fieldset>
                                 </div>
-                                <div className="card-actions justify-center my-5 ">
+                                <div className="card-actions justify-center">
+                                   
                                 <button className="btn text-xl" onClick= {handleSaveProfileClick}>Save Changes</button>
+                                
                                 </div>
                                 
                             </div>
                         </div>
                     </div>
-                    <UserCard user={{firstName, lastName, photoUrl, age, gender, about }} selfProfile={true} />
+
+                    <UserCard  className="fixed" user={{firstName, lastName, photoUrl, age, gender, about }} selfProfile={true} />
+
                 </div>
-        </>
+
+            </>
         
 
     )

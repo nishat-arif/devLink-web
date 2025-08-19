@@ -89,7 +89,7 @@ const Login = () => {
                 <h2 className="card-title flex justify-center text-3xl">{isLoginPage ? "Login" : "Sign Up"}</h2>
                 <div>
                     {errorMessage && 
-                        <div role="alert" className="alert w-[95%] my-4 py-2">
+                        <div role="alert" className="alert w-[95%] my-4 py-2 bg-red-700">
                             <span>Error :  {errorMessage}</span>
                         </div>
                     }

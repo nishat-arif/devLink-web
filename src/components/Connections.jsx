@@ -13,7 +13,7 @@ const Connections = () =>{
     const allConnections = useSelector(store=> store.connection.allConnections)
 
     const getAllConnections =async()=>{ 
-        //if(allConnections) return;
+        if(allConnections) return;
         const connections = await axios.get(base_url + connection_api_suffix ,  { withCredentials: true })
         dispatch(addConnections(connections?.data?.data))
     }

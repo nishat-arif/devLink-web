@@ -1,19 +1,24 @@
 import axios from "axios"
 import { base_url } from "../utils/constants"
-import { removeRequests } from "../utils/store/requestSlice"
-import { useDispatch } from "react-redux"
+import { removeRequests } from "../utils/store/requestSlice";
+import { addConnections } from "../utils/store/connectionSlice";
+import { useDispatch , useSelector} from "react-redux"
 
 const RequestCard = ({request}) =>{
 
     const dispatch = useDispatch();
+    const allConnections = useSelector(store=> store.connection.allConnections)
     const {fromUserId } = request
     const {firstName , lastName , photoUrl , } = fromUserId
 
     const handleReviewRequest = async(status , requestId)=>{
 
-        await axios.post(base_url + '/request/review/' + status + "/" + requestId , {}, { withCredentials: true } )
+        const reviewedData = await axios.post(base_url + '/request/review/' + status + "/" + requestId , {}, { withCredentials: true } )
         dispatch(removeRequests(requestId))
-
+        if(status === "accepted"){
+            dispatch(addConnections([...allConnections , ...[reviewedData.data.data.fromUserId]]))
+        }
+        
     }
 
 

@@ -20,7 +20,7 @@ const Connections = () =>{
 
     useEffect(()=>{
         getAllConnections()
-    })
+    },[])
 
     if(!allConnections) return;
 

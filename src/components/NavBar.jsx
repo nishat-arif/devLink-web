@@ -19,7 +19,7 @@ const NavBar = () =>{
         const options = {withCredentials :true}
         await axios.post(logout_api_url ,{}, options)
         dispatch(removeUser())
-        window.location.reload(); // to reset the redux store
+       // window.location.reload(); // to reset the redux store
         navigate("/login")
 
   }

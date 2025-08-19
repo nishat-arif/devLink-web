@@ -8,15 +8,12 @@ import axios from "axios";
  import {base_url ,profile_view_api_suffix} from "../utils/constants"
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/store/userSlice";
-//import { useSelector } from "react-redux"; 
 
 const Body =()=>{
 
     const dispatch = useDispatch();
     const userData = useSelector(store=> store.user.userData)
     const navigate = useNavigate();
-
-    //const showHeaderFooter = useSelector(store=> store.body.showHeaderFooter)
     const getUserProfile = async()=>{
         if(userData) return;
 

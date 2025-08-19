@@ -4,7 +4,6 @@ import {login_api_url ,base_url , signup_api_suffix} from '../utils/constants'
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/store/userSlice";
 import { useNavigate } from "react-router-dom";
-import {addHeaderFooter} from "../utils/store/bodySlice.js"
 
 
 const Login = () => {
@@ -37,7 +36,6 @@ const Login = () => {
         // const loginData = await data.json();
 
         dispatch(addUser(loginData?.data?.data));
-        dispatch(addHeaderFooter(true))
         navigate("/")
         }
         catch(error){
@@ -73,7 +71,6 @@ const Login = () => {
         // const loginData = await data.json();
 
         dispatch(addUser(signUpData?.data?.data));
-        dispatch(addHeaderFooter(true))
         navigate("/profile")
         }
         catch(error){

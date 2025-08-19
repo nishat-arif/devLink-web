@@ -14,7 +14,9 @@ export const signup_api_suffix = '/signup';
 
 export const requestsReceived_api_suffix = '/users/requests/received';
 
-export const connection_api_suffix = "/users/connections"
+export const connection_api_suffix = "/users/connections";
+
+export const app_icon_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4O8TBQ9TvkdW5tb-u-jfjSLG7PlUaW6DF_dOd5gANdrO5x10-X84vwkA&s"
 
 
 

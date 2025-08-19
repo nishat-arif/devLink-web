@@ -10,7 +10,6 @@ const UserCard = ({user , selfProfile}) =>{
     const { _id, about  , firstName , lastName , skills , age , gender , photoUrl} = user;
 
     const handleSendRequest =async(status , userId)=>{
-
         try{
             await axios.post(base_url + "/request/send/" + status + "/" + userId ,
                                             {},

@@ -62,14 +62,6 @@ const Login = () => {
         const options = {withCredentials :true}
         const signUpData = await axios.post(base_url + signup_api_suffix , signUpCredentials , options)
 
-        // const requestOptions = {
-        //                         method: 'POST',
-        //                         headers: {'Content-Type': 'application/json'},
-        //                         body: JSON.stringify(loginCredentials)};
-
-        // const data = await fetch(login_api_url, requestOptions)
-        // const loginData = await data.json();
-
         dispatch(addUser(signUpData?.data?.data));
         navigate("/profile")
         }

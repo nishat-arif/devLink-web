@@ -17,6 +17,7 @@ const Feed = () => {
     const getUsersFeed = async()=>{
         
             if (feedContent) return; //This line acts as a memoization or optimization. If the feed data already exists in the Redux store, the function immediately returns, preventing unnecessary API calls.
+            
             try {
 
                 const usersFeed = await axios.get(base_url+feed_api_suffix ,{withCredentials : true})
@@ -40,7 +41,7 @@ const Feed = () => {
 
     useEffect(()=>{
             getUsersFeed();
-    },[])//The empty dependency array [] ensures that the getUsersFeed() function is called only once when the Feed component mounts.
+            },[])//The empty dependency array [] ensures that the getUsersFeed() function is called only once when the Feed component mounts.
 
     if (!feedContent) return <Loading />; //This line performs a conditional rendering check. If feed data is not yet available (e.g., while the API call is in progress), the component will render nothing (or a loading indicator could be rendered here). Once feed data is present, the component will proceed to render its content (which is not shown in this snippet but would typically involve mapping over the feed data to display individual feed items).
 

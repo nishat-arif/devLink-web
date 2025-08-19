@@ -5,7 +5,6 @@ import {base_url ,profile_view_api_suffix} from "../utils/constants"
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/store/userSlice";
 import axios from "axios";
-import Loading from "./Loading";
 
 const Profile = () => {
 
@@ -14,7 +13,6 @@ const Profile = () => {
 
      const getUserProfile = async()=>{
         if(userData) return;
-
         const profileData = await axios.get(base_url + profile_view_api_suffix , { withCredentials: true })
         dispatch(addUser(profileData.data?.data));
 

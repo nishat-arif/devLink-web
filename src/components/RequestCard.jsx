@@ -4,20 +4,14 @@ import { removeRequests } from "../utils/store/requestSlice"
 import { useDispatch } from "react-redux"
 
 const RequestCard = ({request}) =>{
+
     const dispatch = useDispatch();
-
     const {fromUserId } = request
-
     const {firstName , lastName , photoUrl , } = fromUserId
-
-    console.log("fromUserId" ,fromUserId )
 
     const handleReviewRequest = async(status , requestId)=>{
 
-        const reviewedRequest = await axios.post(base_url + '/request/review/' + status + "/" + requestId , {},
-                                            { withCredentials: true } )
-
-        console.log("reviewedRequest" , reviewedRequest)
+        await axios.post(base_url + '/request/review/' + status + "/" + requestId , {}, { withCredentials: true } )
         dispatch(removeRequests(requestId))
 
     }
@@ -46,13 +40,8 @@ const RequestCard = ({request}) =>{
                                     <div className="">
                                     <button className="btn btn-primary" onClick={()=>handleReviewRequest("rejected" , request._id)}>Reject</button>
                                 </div>
-                           
-                            
-
-                        </div>
-                            
-                    </div>
-                   
+                        </div>        
+                    </div> 
             </div>)
 }
 

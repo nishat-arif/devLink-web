@@ -7,18 +7,12 @@ import { addRequests } from "../utils/store/requestSlice";
 
 const Requests = () =>{
     const dispatch = useDispatch();
-
     const allRequests = useSelector(store=>store.request.allRequests)
 
 
     const getAllRequests = async()=>{
         if(allRequests) return
-
-
-
         const requestData = await axios.get(base_url+requestsReceived_api_suffix , { withCredentials: true });
-        console.log("getRequest" , requestData?.data?.data)
-
         dispatch(addRequests(requestData?.data?.data))
     }
 

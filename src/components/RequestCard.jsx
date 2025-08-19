@@ -36,7 +36,7 @@ const RequestCard = ({request}) =>{
 
                         <div className="px-15 flex gap-10 items-center justify-center">
                             <div >
-                                <h2 className="">{firstName + lastName}</h2>
+                                <h2 className="">{firstName +" " + lastName}</h2>
                                 <p>sent you a connection request.</p>
                             </div>
                           

@@ -81,7 +81,7 @@ const Login = () => {
             if (axios.isAxiosError(error)) {
                 // Handle Axios-specific errors (e.g., network errors, server responses with status codes)
                 console.error('Axios Error:', error.response ? error.response.data : error.message);
-                setErrorMessage("Invalid Data !!")
+                setErrorMessage(error.response.data)
                 } else {
                 // Handle other types of errors
                 console.error('General Error:', error);

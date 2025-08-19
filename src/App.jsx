@@ -9,6 +9,7 @@ import appStore from "./utils/store/appStore"
 import Connections from "./components/Connections"
 import Requests from "./components/Requests";
 import Error from "./components/Error"
+import Password from "./components/Password"
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/" element = {<Feed/>} />
                 <Route path="/login" element = {<Login/>}/>     
                 <Route path="/profile" element = {<Profile/>}/>
+                <Route path="/profile/password" element = {<Password/>}/>
                 <Route path="/connections" element={<Connections/>}/>
                 <Route path="/requests" element={<Requests/>}/>
                 <Route path="/error" element={<Error/>}/>

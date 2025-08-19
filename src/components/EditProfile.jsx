@@ -129,11 +129,12 @@ const EditProfile = ({userData}) => {
 
                             <fieldset className="fieldset">
                                 <legend className="fieldset-legend">About</legend>
-                                <input type="text" className="input" placeholder="Type here"  value= {about} onChange={(e)=>{setAbout(e.target.value)}}/>
+                                {/* <input type="text" className="input" placeholder="Type here"  value= {about} onChange={(e)=>{setAbout(e.target.value)}}/> */}
+                                <textarea className="textarea" placeholder="Type here" value={about} onChange={(e)=>{setAbout(e.target.value)}}></textarea>
                             </fieldset>
 
                              <fieldset className="flex justify-center ">
-                                <p className="fieldset-legend underline"> <Link to="/">Change Password</Link></p>
+                                <p className="fieldset-legend underline"> <Link to="/profile/password">Change Password</Link></p>
                                
                                 {/* <input type="text" className="input" placeholder="Type here"  value= {password} onChange={(e)=>{setPassword(e.target.value)}}/> */}
                             </fieldset>

@@ -7,17 +7,20 @@ const ConnectionCard = ({connection}) =>{
     
     return (<div  className="flex  mx-auto">
 
-                <div className="card card-side bg-base-100 shadow-sm flex h-28 w-[700px] hover:bg-slate-700">
-                    <figure>
+                <div className="card card-side bg-base-100 shadow-sm flex h-28 w-[500px] p-2 hover:bg-slate-900" >
+                    <figure className="w-24 h-24 p-1">
                         <img
                         src= {photoUrl}
-                        alt="profile photo" />
+                        alt="profile photo" className="  object-fit border border-white rounded-full"/>
                     </figure>
 
-                    <div className="px-15 flex gap-10 items-center justify-center">
-                        <div >
+                    <div className="px-15 flex flex-col items-start justify-center">
+                        
                             <h2 className="text-md ">{firstName +" "+ lastName}</h2>
-                            <Link className="underline cursor-pointer">View Profile</Link>
+                        <div className="flex gap-5 mt-4 ">
+                            <Link className="underline cursor-pointer">View Profile</Link>  
+                            <Link className="underline cursor-pointer">Chat</Link> 
+                            <Link className="underline cursor-pointer">Remove</Link>
                         </div>
                         
 

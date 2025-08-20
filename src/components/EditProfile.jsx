@@ -131,7 +131,9 @@ const EditProfile = ({userData}) => {
                         </div>
                     </div>
 
-                    <UserCard  className="fixed" user={{firstName, lastName, photoUrl, age, gender, about }} selfProfile={true} />
+                <UserCard  className="fixed " user={{firstName, lastName, photoUrl, age, gender, about }} selfProfile={true} />
+
+                    
 
                 </div>
 

@@ -34,7 +34,7 @@ const NavBar = () =>{
               <div className="navbar bg-base-300 shadow-sm">
                   <div className="flex-1 ">
                     <Link to="/" className="text-4xl font-bold flex flex-row gap-5 items-center">
-                    <img src={app_icon_url} className="w-16 h-16 cursor-pointer "/>
+                    <img src={app_icon_url} className="w-16 h-16 cursor-pointer rounded-full"/>
                     <span className="cursor-pointer ">DevLink</span></Link>
                   </div>
                   <div className="flex gap-2">
@@ -43,7 +43,7 @@ const NavBar = () =>{
                         <p >Welcome, {userData.firstName}</p>
                         <div className="dropdown dropdown-end mx-5">
                           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
+                            <div className="w-10 rounded-full border border-white ">
                               <img
                                 alt="profile photo"
                                 src= {userData.photoUrl} />

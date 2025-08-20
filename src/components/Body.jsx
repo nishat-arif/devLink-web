@@ -39,8 +39,8 @@ const Body =()=>{
                 <NavBar/>
             </div>
 
-            <div className="flex h-screen fixed inset-0 ">
-                <main className="flex-1 overflow-y-auto mt-16 mb-16 bg-amber-50">
+            <div className="flex h-screen fixed inset-0  ">
+                <main className="flex-1 overflow-y-auto mt-16 mb-16 bg-indigo-300">
                     <Outlet/>
                 </main>
             </div>

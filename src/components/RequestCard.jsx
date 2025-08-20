@@ -26,11 +26,11 @@ const RequestCard = ({request}) =>{
     
     return (<div  className="flex  mx-auto">
 
-                    <div className="card card-side bg-base-100 shadow-sm flex h-28 w-[700px]  hover:bg-slate-700">
-                        <figure>
+                    <div className="card card-side bg-base-100 shadow-sm flex h-28 w-[700px] p-2 hover:bg-slate-900">
+                        <figure className="w-24 h-24 p-1">
                             <img
                             src= {photoUrl}
-                            alt="profile photo" />
+                            alt="profile photo" className=" object-fit border border-white rounded-full "/>
                         </figure>
 
                         <div className="px-15 flex gap-10 items-center justify-center">
@@ -40,10 +40,10 @@ const RequestCard = ({request}) =>{
                             </div>
                           
                                 <div className="">
-                                    <button className="btn btn-primary" onClick={()=>handleReviewRequest("accepted" , request._id)}>Accept</button>
+                                    <button className="btn btn-primary hover:bg-indigo-400" onClick={()=>handleReviewRequest("accepted" , request._id)}>Accept</button>
                                     </div>
                                     <div className="">
-                                    <button className="btn btn-primary" onClick={()=>handleReviewRequest("rejected" , request._id)}>Reject</button>
+                                    <button className="btn btn-primary hover:bg-indigo-400" onClick={()=>handleReviewRequest("rejected" , request._id)}>Reject</button>
                                 </div>
                         </div>        
                     </div> 

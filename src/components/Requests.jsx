@@ -24,7 +24,7 @@ const Requests = () =>{
     if(!allRequests) return;
 
     if (allRequests.length <= 0){
-        return (<div className=' bg-amber-500 text-black flex w-1/3 mx-auto my-10 py-4 justify-center rounded-xl'>
+        return (<div className='bg-indigo-600 text-white flex w-1/3 mx-auto my-10 py-4 justify-center rounded-xl'>
                 <h3>No Pending Requests!!!</h3>
                 </div>);}
 

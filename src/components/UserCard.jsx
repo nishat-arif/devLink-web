@@ -36,12 +36,12 @@ const UserCard = ({user , selfProfile}) =>{
     }
 
     return (<div className="flex justify-center my-[100px]">
-                <div className="card bg-base-100 w-96 shadow-sm  hover:bg-slate-700">
-                    <figure className="px-10 pt-10">
+                <div className="card bg-base-100 w-96 shadow-sm pt-[30px] hover:bg-slate-900">
+                    <figure className="px-10 pt-10 w-96 h-96">
                         <img
                         src= {photoUrl}
                         alt="profile photo"
-                        className="rounded-xl" />
+                        className="rounded-xl object-fit" />
                     </figure>
                     <div className="card-body items-center text-center justify-around">
                         <h2 className="card-title">{firstName + " " + lastName}</h2>
@@ -51,8 +51,8 @@ const UserCard = ({user , selfProfile}) =>{
                         {!selfProfile &&
                         
                         <div className="card-actions">
-                        <button className="btn btn-primary" onClick={()=>handleSendRequest("interested" , _id)}>Like</button>
-                        <button className="btn btn-primary" onClick={()=>handleSendRequest("ignored" , _id)}>Pass</button>
+                        <button className="btn btn-primary hover:bg-indigo-400 cursor-pointer" onClick={()=>handleSendRequest("interested" , _id)}>Like</button>
+                        <button className="btn btn-primary hover:bg-indigo-400 cursor-pointer" onClick={()=>handleSendRequest("ignored" , _id)}>Pass</button>
                         </div>
                         
                         }

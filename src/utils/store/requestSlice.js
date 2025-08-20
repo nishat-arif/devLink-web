@@ -20,9 +20,15 @@ const requestSlice = createSlice({
 
         },
 
+        clearRequests: (state )=>{
+            state.allRequests = null
+      
+
+        },
+
     }
 });
 
-export const {addRequests , removeRequests} = requestSlice.actions
+export const {addRequests , removeRequests, clearRequests} = requestSlice.actions
 
 export default requestSlice.reducer;

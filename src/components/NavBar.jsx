@@ -4,7 +4,10 @@ import {logout_api_url} from '../utils/constants'
 import { useDispatch } from "react-redux";
 import { removeUser } from "../utils/store/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-import {app_icon_url} from "../utils/constants"
+import {app_icon_url} from "../utils/constants";
+import { clearConnections } from "../utils/store/connectionSlice";
+import { clearFeed } from "../utils/store/feedSlice";
+import { clearRequests } from "../utils/store/requestSlice";
 
 
 const NavBar = () =>{
@@ -19,6 +22,9 @@ const NavBar = () =>{
         const options = {withCredentials :true}
         await axios.post(logout_api_url ,{}, options)
         dispatch(removeUser())
+        dispatch(clearConnections())
+        dispatch(clearFeed())
+        dispatch(clearRequests())
        // window.location.reload(); // to reset the redux store
         navigate("/login")
 

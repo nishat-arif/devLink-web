@@ -15,7 +15,7 @@ const userSlice = createSlice({
 
         removeUser : (state )=>{
             state.userData = null
-        }
+        },
     }
 });
 

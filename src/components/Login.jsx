@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
-import {login_api_url ,base_url , signup_api_suffix} from '../utils/constants'
+import {login_api_suffix ,base_url , signup_api_suffix} from '../utils/constants'
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/store/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +25,7 @@ const Login = () => {
             const loginCredentials = {emailId , password}
 
         const options = {withCredentials :true}
-        const loginData = await axios.post(login_api_url ,loginCredentials, options)
+        const loginData = await axios.post(base_url + login_api_suffix ,loginCredentials, options)
 
         // const requestOptions = {
         //                         method: 'POST',

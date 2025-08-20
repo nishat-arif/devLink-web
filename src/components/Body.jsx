@@ -39,9 +39,13 @@ const Body =()=>{
                 <NavBar/>
             </div>
 
-            <main className="flex-1 overflow-y-auto mt-16 mb-16 bg-amber-50">
-                <Outlet/>
-            </main>
+            <div className="flex h-screen fixed inset-0 ">
+                <main className="flex-1 overflow-y-auto mt-16 mb-16 bg-amber-50">
+                    <Outlet/>
+                </main>
+            </div>
+
+          
 
             <div className="fixed bottom-0 left-0 w-full z-50 bg-white shadow-md">
                 <Footer/>

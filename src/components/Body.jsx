@@ -16,21 +16,29 @@ const Body =()=>{
     const navigate = useNavigate();
 
     const getUserProfile = async()=>{
-        if(userData) return;
-        const profileData = await axios.get(base_url + profile_view_api_suffix , { withCredentials: true })
-        dispatch(addUser(profileData.data?.data));
 
-    }
+            if (userData) return;
+            try {
+            const profileData = await axios.get(base_url + profile_view_api_suffix , {
+                withCredentials: true,
+            });
+            dispatch(addUser(profileData.data?.data));
+            } catch (err) {
+            if (err.status === 401 || err.status === 404) {
+                navigate("/login");
+            }
+            console.error(err);
+            }
+        };
+    
+
+    
 
     useEffect(()=>{
-        // Get a cookie
-        const value = Cookies.get('authToken');
-        if(!value ){
-            navigate("/login")
-        }else{
+
             getUserProfile();
 
-        }
+        
         },[])
 
     return (

@@ -19,7 +19,7 @@ const ConnectionCard = ({connection}) =>{
                             <h2 className="text-md ">{firstName +" "+ lastName}</h2>
                         <div className="flex gap-5 mt-4 ">
                             <Link className="underline cursor-pointer"><button className="btn btn-primary">View Profile</button></Link>  
-                            <Link to={"/chat/" + _id}className="underline cursor-pointer"><button className="btn btn-primary">Chat</button></Link> 
+                            <Link  to={"/chat/" + _id} state={connection} className="underline cursor-pointer" ><button className="btn btn-primary">Chat</button></Link> 
                             <Link className="underline cursor-pointer"><button className="btn btn-primary">Remove</button></Link>
                         </div>
                         

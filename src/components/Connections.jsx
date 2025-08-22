@@ -26,7 +26,7 @@ const Connections = () =>{
 
     if (allConnections.length <= 0){
         return (<div className=' bg-indigo-600 text-white p-5 flex  flex-col gap-2 w-1/3 mx-auto my-10 py-4 items-center justify-center rounded-xl'>
-                    <h3>You have no connections currently .</h3><Link to="/" className="cursor-pointer underline"> Make new connections from here !!</Link>
+                    <h3>You have no connections currently .</h3><Link to="/" className="cursor-pointer underline">Let's explore the feed for new connections!!</Link>
                 </div>);}
 
     return (<div className="flex my-15  flex-col gap-10">

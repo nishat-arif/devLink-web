@@ -16,7 +16,15 @@ const RequestCard = ({request}) =>{
         const reviewedData = await axios.post(base_url + '/request/review/' + status + "/" + requestId , {}, { withCredentials: true } )
         dispatch(removeRequests(requestId))
         if(status === "accepted"){
-            dispatch(addConnections([...allConnections , ...[reviewedData.data.data.fromUserId]]))
+            
+            if(!allConnections){
+                dispatch(addConnections([...[reviewedData.data.data.fromUserId]]))
+
+            }else{
+                dispatch(addConnections([...allConnections , ...[reviewedData.data.data.fromUserId]]))
+
+            }
+            
         }
         
     }

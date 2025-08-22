@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ConnectionCard = ({connection}) =>{
 
-    const {firstName , lastName , photoUrl } = connection
+    const {firstName , lastName , photoUrl ,_id } = connection
 
     
     return (<div  className="flex  mx-auto">
@@ -18,9 +18,9 @@ const ConnectionCard = ({connection}) =>{
                         
                             <h2 className="text-md ">{firstName +" "+ lastName}</h2>
                         <div className="flex gap-5 mt-4 ">
-                            <Link className="underline cursor-pointer">View Profile</Link>  
-                            <Link className="underline cursor-pointer">Chat</Link> 
-                            <Link className="underline cursor-pointer">Remove</Link>
+                            <Link className="underline cursor-pointer"><button className="btn btn-primary">View Profile</button></Link>  
+                            <Link to={"/chat/" + _id}className="underline cursor-pointer"><button className="btn btn-primary">Chat</button></Link> 
+                            <Link className="underline cursor-pointer"><button className="btn btn-primary">Remove</button></Link>
                         </div>
                         
 

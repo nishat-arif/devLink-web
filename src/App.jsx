@@ -10,6 +10,7 @@ import Connections from "./components/Connections"
 import Requests from "./components/Requests";
 import Error from "./components/Error"
 import Password from "./components/Password"
+import Chat from "./components/Chat"
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/connections" element={<Connections/>}/>
                 <Route path="/requests" element={<Requests/>}/>
                 <Route path="/error" element={<Error/>}/>
+                <Route path="/chat/:targetUserId" element={<Chat/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

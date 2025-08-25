@@ -55,6 +55,7 @@ const NavBar = () =>{
                           <li><Link  className="justify-between" to="/profile">Profile</Link></li>
                           <li><Link  className="justify-between" to="/connections">Connections</Link></li>
                           <li><Link  className="justify-between" to="/requests">Requests</Link></li>
+                          <li><Link  className="justify-between" to="/premium">Premium <span className="badge badge-xs badge-warning">Upgrade</span></Link></li>
                           <li><a onClick={handleLogoutClick}>Logout</a></li>
                         </ul>
                         </div>

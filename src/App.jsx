@@ -11,6 +11,7 @@ import Requests from "./components/Requests";
 import Error from "./components/Error"
 import Password from "./components/Password"
 import Chat from "./components/Chat"
+import Premium from "./components/Premium"
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
                 <Route path="/requests" element={<Requests/>}/>
                 <Route path="/error" element={<Error/>}/>
                 <Route path="/chat/:targetUserId" element={<Chat/>}/>
+                <Route path="/premium" element={<Premium/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

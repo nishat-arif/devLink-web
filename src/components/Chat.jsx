@@ -23,30 +23,46 @@ const Chat = ()=>{
     const loggedInUser = useSelector(store=>store.user.userData);
     const loggedInUserId  = loggedInUser?._id
 
-    const time = new Date();
-
     const fetchChatMessages = async () => {
     const chat = await axios.get(base_url + "/chat/" + targetUserId, {
       withCredentials: true,
     });
 
-    console.log(chat?.data?.messages);
+    console.log("chats",chat?.data?.messages);
 
     const chatMessages = chat?.data?.messages.map((msg) => {
-      const { senderId, text } = msg;
+      const { senderId, text , createdAt } = msg;
       return {
         firstName: senderId?.firstName,
         lastName: senderId?.lastName,
         photoUrl: senderId?.photoUrl,
-        text
+        text,
+        createdAt
       };
     });
-    setMessages(chatMessages);
+    setMessages(chatMessages.reverse());
+
   };
+
+
+    
+
+ 
 
   useEffect(() => {
     fetchChatMessages();
   }, []);
+
+//    // 2. Define a function to perform the scroll
+//   const scrollToBottom = () => {
+//     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+//   };
+
+//   // 3. Trigger the scroll on initial load and when messages are updated
+//   useEffect(() => {
+//     scrollToBottom();
+//   }, [messages]);
+
    
     
 
@@ -80,7 +96,14 @@ const Chat = ()=>{
         });
 
         setNewMessage("");
+        setMessages((messages) => [{firstName: loggedInUser.firstName,
+        lastName: loggedInUser.lastName,
+        photoUrl : loggedInUser.photoUrl,
+        text: newMessage,
+        createdAt : new Date().toUTCString()
+    } ,...messages]);
     }
+
 
     if(!loggedInUser) return;
 
@@ -103,12 +126,12 @@ const Chat = ()=>{
             </div>
             
             <hr/>
-            <div className="py-2 h-[400px] overflow-y-scroll flex flex-col">
+            <div className="py-2 h-[400px] overflow-y-scroll flex flex-col-reverse">
                 {messages && 
                 messages.map((msg , index)=>{return (
                     
                 
-                        <div key={index} className={"chat " + (loggedInUser.firstName === msg.firstName ? "chat-end" : "chat-start")}>
+                        <div key={index} className={"chat my-2 " + (loggedInUser.firstName === msg.firstName ? "chat-end" : "chat-start")}>
                             <div className="chat-image avatar">
                                 <div className="w-8 rounded-full">
                                 <img
@@ -119,13 +142,16 @@ const Chat = ()=>{
                             </div>
                             <div className="chat-header">
                                 {msg.firstName + " " + msg.lastName}
-                                <time className="text-xs opacity-50">12:46</time>
+                                <time className="text-xs opacity-50">{`${new Date(msg.createdAt).getHours()}:${new Date(msg.createdAt).getMinutes()}`}</time>
                             </div>
-                            <div className="chat-bubble bg-primary">{msg.text}</div>
-                            <div className="chat-footer opacity-50">{`Seen: ${time.getHours()}:${time.getMinutes()}`}</div>
+                            <div className="chat-bubble bg-primary ">{msg.text}</div>
+                            {/* <div className="chat-footer opacity-50">{"Seen"}</div> */}
                         </div>
+                    
                 
                 )})}
+
+              
             </div>
             
             

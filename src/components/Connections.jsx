@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { connection_api_suffix } from "../utils/constants";
-import { base_url } from "../utils/constants";
+import { connection_api_suffix } from "../utils/constants.js";
+import { base_url } from "../utils/constants.js";
 import ConnectionCard from "./ConnectionCard";
 import axios from "axios";
 import { addConnections } from "../utils/store/connectionSlice";

@@ -24,6 +24,8 @@ export const payment_create_suffix = "/payment/create"
 
 export const payment_verify_suffix = "/payment/verify"
 
+export const remove_connection_suffix = "/users/removeconnection"
+
 export const app_icon_url = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4O8TBQ9TvkdW5tb-u-jfjSLG7PlUaW6DF_dOd5gANdrO5x10-X84vwkA&s"
 
 

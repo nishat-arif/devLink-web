@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { createSocketConnection } from "../utils/socket";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import {base_url } from "../utils/constants"
+import {base_url } from "../utils/constants.js"
 
 const Chat = ()=>{
 

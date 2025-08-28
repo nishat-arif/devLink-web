@@ -1,10 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
  import {base_url , payment_create_suffix, payment_verify_suffix } from "../utils/constants"
+import { useDispatch } from "react-redux";
+import { updateUserIsPremium } from "../utils/store/userSlice";
 
 const Premium = ()=>{
 
     const [isUserPremium, setIsUserPremium] = useState(false);
+    const dispatch = useDispatch();
+    
 
     useEffect(() => {
         //if(!isUserPremium ) return;
@@ -20,6 +24,7 @@ const Premium = ()=>{
 
         if (res.data.isPremium) {
         setIsUserPremium(true);
+        dispatch(updateUserIsPremium(true))
         }
     };
 

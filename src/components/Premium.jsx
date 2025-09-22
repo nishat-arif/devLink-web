@@ -1,12 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
- import {base_url , payment_create_suffix, payment_verify_suffix } from "../utils/constants"
+ import {base_url , payment_create_suffix, payment_verify_suffix } from "../utils/constants.js"
+import { useDispatch } from "react-redux";
+import { updateUserIsPremium } from "../utils/store/userSlice";
 
 const Premium = ()=>{
 
     const [isUserPremium, setIsUserPremium] = useState(false);
+    const dispatch = useDispatch();
+    
 
     useEffect(() => {
+        //if(!isUserPremium ) return;
         verifyPremiumUser();
     }, [isUserPremium]);
 
@@ -19,6 +24,7 @@ const Premium = ()=>{
 
         if (res.data.isPremium) {
         setIsUserPremium(true);
+        dispatch(updateUserIsPremium(true))
         }
     };
 
@@ -55,13 +61,45 @@ const Premium = ()=>{
   };
     return isUserPremium ?
          <div className="flex justify-center my-40">
-            <div className="card bg-neutral text-neutral-content w-96">
-                <div className="card-body items-center text-center">
-                    <h2 className="card-title">Congraulations!</h2>
-                    <p>You are already a premium user now.</p>
+            <div className="card w-96 bg-base-100 shadow-sm flex items-center justify-center">
+                <div className="card-body">
+                    <h3 className="badge badge-lg badge-warning mx-auto">Congratulations!!!</h3>
+                    <div className="flex justify-between">
+                    <p className="text-lg font-bold">You are now a premium member and eligible for :</p>
+                    </div>
+                    <ul className="mt-6 flex flex-col gap-2 text-xs">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                        <span>Swipe right as much as you want without daily limits.</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                        <span>Get a badge to display exclusive status on your profile</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                        <span>Undo your last swipe if you made a mistake.</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                        <span>Change your location to swipe and match with people.</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                        <span>Enjoy an ad-free experience.</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                        <span >Visible to only users you have liked.</span>
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+                        <span >AI powered experience</span>
+                    </li>
+                    </ul>
                 </div>
             </div>
-         </div> 
+        </div>
         
         :
 

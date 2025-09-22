@@ -16,9 +16,14 @@ const userSlice = createSlice({
         removeUser : (state )=>{
             state.userData = null
         },
+
+        updateUserIsPremium : (state, action)=>{
+            state.userData["isPremium"] = action.payload
+
+        }
     }
 });
 
-export const {addUser  , removeUser} = userSlice.actions
+export const {addUser  , removeUser, updateUserIsPremium} = userSlice.actions
 
 export default userSlice.reducer;
